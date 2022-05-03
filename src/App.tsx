@@ -1,4 +1,9 @@
 import { Outlet } from "react-router-dom";
+import {
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+} from "@azure/msal-react";
+import { SignInButton } from "./components/SignIn/SignInButton";
 import "./globals.css";
 import styles from "./AppShell.module.css";
 
@@ -8,8 +13,14 @@ function App() {
       <header className={styles.header}>
         <div>SetMatch</div>
         <nav className={`${styles.headerNav}`}>
-          <a href="">Login</a>
-          <a href="">Signup</a>
+          <AuthenticatedTemplate>
+            <a href="">Logout</a>
+            <a href="">Profile</a>
+          </AuthenticatedTemplate>
+          <UnauthenticatedTemplate>
+            <SignInButton />
+            <a href="">Signup</a>
+          </UnauthenticatedTemplate>
         </nav>
       </header>
       <Outlet />
