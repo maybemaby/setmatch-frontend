@@ -1,0 +1,25 @@
+.header {
+  background-color: rgba(219, 230, 240, 0.411);
+  box-shadow: rgba(0, 0, 0, 0.637) 0px 10px 20px -20px;
+  height: 70px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 30px;
+  color: var(--font-green);
+}
+
+.headerNav {
+  display: flex;
+  gap: 20px;
+  color: black;
+  font-size: 1.1rem;
+}
+
+.headerNav a {
+  text-decoration: none;
+  color: inherit;
+}

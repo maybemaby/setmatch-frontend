@@ -6,12 +6,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
+    "lint:format": "prettier --write ./src",
     "preview": "vite preview"
   },
   "dependencies": {
     "eslint-plugin-react": "^7.29.4",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
