@@ -11,7 +11,17 @@ import "./index.css";
 export const msalInstance = new PublicClientApplication(msalConfig);
 
 msalInstance.addEventCallback((event) => {
-  console.log(event);
+  switch (event.eventType) {
+    case EventType.ACCOUNT_ADDED:
+      console.log(event.payload);
+      break;
+    case EventType.ACCOUNT_REMOVED:
+      console.log(event.payload);
+      break;
+    default:
+      console.log(event);
+      break;
+  }
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

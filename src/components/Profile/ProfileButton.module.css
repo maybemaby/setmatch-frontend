@@ -1,0 +1,11 @@
+.container {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+}
+
+.container:hover {
+  cursor: pointer;
+}

@@ -3,7 +3,9 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
 } from "@azure/msal-react";
+import { SignOutButton } from "./components/SignOut/SignOutButton";
 import { SignInButton } from "./components/SignIn/SignInButton";
+import { ProfileButton } from "./components/Profile/ProfileButton";
 import "./globals.css";
 import styles from "./AppShell.module.css";
 
@@ -14,8 +16,8 @@ function App() {
         <div>SetMatch</div>
         <nav className={`${styles.headerNav}`}>
           <AuthenticatedTemplate>
-            <a href="">Logout</a>
-            <a href="">Profile</a>
+            <SignOutButton />
+            <ProfileButton />
           </AuthenticatedTemplate>
           <UnauthenticatedTemplate>
             <SignInButton />

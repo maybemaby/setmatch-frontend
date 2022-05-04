@@ -6,11 +6,16 @@ const TENANT =
 export const b2cPolicies = {
   names: {
     signUpSignIn: "B2C_1_setmatch_auth_v1",
+    profileEdit: "B2C_1_setmatch_auth_edit",
   },
   authorities: {
     signUpSignIn: {
       authority:
         "https://setmatchlogin.b2clogin.com/setmatchlogin.onmicrosoft.com/B2C_1_setmatch_auth_v1",
+    },
+    profileEdit: {
+      authority:
+        "https://setmatchlogin.b2clogin.com/setmatchlogin.onmicrosoft.com/B2C_1_setmatch_auth_edit",
     },
   },
   authorityDomain: "setmatchlogin.b2clogin.com",

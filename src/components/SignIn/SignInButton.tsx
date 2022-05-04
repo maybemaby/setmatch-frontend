@@ -5,8 +5,8 @@ import styles from "./SignInButton.module.css";
 export const SignInButton = () => {
   const { instance } = useMsal();
 
-  const handleLogin = () => {
-    instance.loginRedirect(loginRequest);
+  const handleLogin = async () => {
+    await instance.loginRedirect(loginRequest);
   };
 
   return (
