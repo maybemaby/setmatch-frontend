@@ -1,21 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { EventType, PublicClientApplication } from "@azure/msal-browser";
+import {
+  AuthenticationResult,
+  EventType,
+  PublicClientApplication,
+} from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
 import App from "./App";
 import { Home } from "./components/pages/Home/Home";
 import { Courts } from "./components/pages/Courts/Courts";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
+import { postUser } from "./handlers/users";
 import { msalConfig } from "./config";
 import "./index.css";
+import { IClaims } from "./types/IClaims";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
 
-msalInstance.addEventCallback((event) => {
+msalInstance.addEventCallback(async (event) => {
   switch (event.eventType) {
-    case EventType.ACCOUNT_ADDED:
-      console.log(event.payload);
+    case EventType.LOGIN_SUCCESS:
+      const auth = event.payload as AuthenticationResult;
+      if ((auth.idTokenClaims as IClaims).newUser) {
+        await postUser(auth.accessToken);
+      }
       break;
     case EventType.ACCOUNT_REMOVED:
       console.log(event.payload);
