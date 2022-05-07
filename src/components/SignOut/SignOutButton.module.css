@@ -7,8 +7,10 @@
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
+  transition: background-color 200ms ease-in-out;
 }
 
 .container:hover {
   cursor: pointer;
+  background-color: var(--green-500);
 }

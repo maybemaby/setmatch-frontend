@@ -1,0 +1,56 @@
+* {
+  font-family: inherit;
+}
+
+.container {
+  color: var(--white-500);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../static/hero.jpg");
+  height: 60vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: translate(0, -20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.header {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: inherit;
+  animation: intro 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.subheader {
+  opacity: 0;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: inherit;
+  animation: intro 500ms cubic-bezier(0.165, 0.84, 0.44, 1) 500ms forwards normal;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    gap: 5px;
+  }
+
+  .header {
+    font-size: 2.5rem;
+    position: relative;
+    bottom: 40px;
+  }
+}

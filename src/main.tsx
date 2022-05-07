@@ -26,9 +26,6 @@ msalInstance.addEventCallback(async (event) => {
         await postUser(auth.accessToken);
       }
       break;
-    case EventType.ACCOUNT_REMOVED:
-      console.log(event.payload);
-      break;
     default:
       console.log(event);
       break;

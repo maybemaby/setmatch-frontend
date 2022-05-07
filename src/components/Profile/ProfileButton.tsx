@@ -1,4 +1,5 @@
 import { useMsal } from "@azure/msal-react";
+import { CgProfile } from "react-icons/cg";
 import { b2cPolicies, loginRequest } from "../../config";
 import styles from "./ProfileButton.module.css";
 
@@ -13,7 +14,7 @@ export const ProfileButton = () => {
   };
   return (
     <button className={styles.container} onClick={handleEdit}>
-      Profile
+      <CgProfile size={35} color={"#62e62e"} />
     </button>
   );
 };
