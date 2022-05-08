@@ -6,4 +6,5 @@ export interface ICourt {
   address: string;
   name: string;
   type: string;
+  favoriteCount: number;
 }

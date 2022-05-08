@@ -1,0 +1,65 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  } 100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  opacity: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
+  background-color: var(--white-500);
+  line-height: 1.1rem;
+  border-radius: 15px;
+  width: 100%;
+  text-align: start;
+  border: 2px solid rgba(0, 0, 0, 0.596);
+  animation: fade-in 500ms ease-in both;
+}
+
+.header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.footer {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.stats {
+  align-self: flex-end;
+}
+
+.homeButton {
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.418);
+  background-color: rgba(177, 103, 238, 0.562);
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  transition: background-color 200ms ease-in-out;
+}
+
+.homeButton:hover {
+  cursor: pointer;
+  background-color: rgba(173, 135, 223, 0.425);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 80%;
+  }
+}

@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useMsal } from "@azure/msal-react";
+import { CourtList } from "./CourtList/CourtList";
 import { usePageContext } from "../../PageNavigator/usePageProvider";
 import { PageNavigator } from "../../PageNavigator/PageNavigator";
 import { useCourts } from "../../../hooks/useCourts";
@@ -27,29 +28,28 @@ export const Courts = () => {
 
   useEffect(() => {
     if (typeof data?.length !== "undefined" && data.length < 10) {
-      pageContext?.dispatchPage({type: "limitSwitch", direction: "top"})
+      pageContext?.dispatchPage({ type: "limitSwitch", direction: "top" });
     }
-  }, [data])
+  }, [data]);
 
   return (
-      <main className={styles.container}>
-        {userContext?.user && userContext.user.homeCourt === null ? (
-          <div className={styles.alert}>Home Court: Not set</div>
-        ) : (
-          <div className={styles.alert}>
-            Home Court: {userContext?.user?.homeCourt?.address}
-          </div>
-        )}
-        {isLoading && <div>Loading results...</div>}
-        {isError && <div>Could not fetch results, try again later</div>}
-        {data?.map((court, index) => {
-          return <div key={index}>{court.address}</div>;
-        })}
-        <PageNavigator>
-          <PageNavigator.Previous />
-          <PageNavigator.Display />
-          <PageNavigator.Next />
-        </PageNavigator>
-      </main>
+    <main className={styles.container}>
+      <h1 className={styles.header}>Courts</h1>
+      {userContext?.user && userContext.user.homeCourt === null ? (
+        <div className={styles.alert}>Home Court: Not set</div>
+      ) : (
+        <div className={styles.alert}>
+          Home Court: {userContext?.user?.homeCourt?.address}
+        </div>
+      )}
+      {isLoading && <div>Loading results...</div>}
+      {isError && <div>Could not fetch results, try again later</div>}
+      <CourtList courts={data ?? []} />
+      <PageNavigator>
+        <PageNavigator.Previous />
+        <PageNavigator.Display />
+        <PageNavigator.Next />
+      </PageNavigator>
+    </main>
   );
 };
