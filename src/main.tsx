@@ -8,6 +8,7 @@ import {
 } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
 import { QueryClient, QueryClientProvider } from "react-query";
+// import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App";
 import { Home } from "./components/pages/Home/Home";
 import { Courts } from "./components/pages/Courts/Courts";
@@ -17,6 +18,7 @@ import { msalConfig } from "./config";
 import "./index.css";
 import { IClaims } from "./types/IClaims";
 import { UserProvider } from "./components/UserProvider/UserProvider";
+import { PageProvider } from "./components/PageNavigator/usePageProvider";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 const queryClient = new QueryClient();
@@ -41,16 +43,19 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <MsalProvider instance={msalInstance}>
       <UserProvider>
         <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<App />}>
-                <Route index={true} element={<Home />}></Route>
-                <Route element={<ProtectedRoutes />}>
-                  <Route path="/courts" element={<Courts />}></Route>
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+          <PageProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<App />}>
+                  <Route index={true} element={<Home />}></Route>
+                  <Route element={<ProtectedRoutes />}>
+                    <Route path="/courts" element={<Courts />}></Route>
+                  </Route>
                 </Route>
-              </Route>
-            </Routes>
-          </BrowserRouter>
+              </Routes>
+            </BrowserRouter>
+          </PageProvider>
         </QueryClientProvider>
       </UserProvider>
     </MsalProvider>

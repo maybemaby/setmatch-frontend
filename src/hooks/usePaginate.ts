@@ -3,11 +3,14 @@ import React, { useReducer } from "react";
 type Action =
   | { type: "next" }
   | { type: "prev" }
-  | { type: "to"; page: number };
+  | { type: "to"; page: number }
+  | { type: "limitSwitch"; direction: Limit };
+
+type Limit = "bottom" | "top" | "none";
 
 type State = {
   page: number;
-  limitReached: boolean;
+  limitReached: Limit;
   pageLimit?: number;
 };
 
@@ -17,22 +20,22 @@ const nextPage = (current: State): State => {
   }
   const next = { ...current, page: current.page + 1 };
   if (next.page === current.pageLimit) {
-    next.limitReached = true;
+    next.limitReached = "top";
   } else {
-    next.limitReached = false;
+    next.limitReached = "none";
   }
   return next;
 };
 
 const prevPage = (current: State): State => {
   if (current.page === 1) {
-    return current;
+    return { ...current, limitReached: "bottom" };
   }
   const next = { ...current, page: current.page - 1 };
   if (next.page === 1) {
-    next.limitReached = true;
+    next.limitReached = "bottom";
   } else {
-    next.limitReached = false;
+    next.limitReached = "none";
   }
   return next;
 };
@@ -44,7 +47,7 @@ const to = (current: State, destination: number): State => {
   ) {
     return current;
   } else {
-    current.limitReached = false;
+    current.limitReached = "none";
     return { ...current, page: destination };
   }
 };
@@ -63,13 +66,16 @@ const pageReducer: React.Reducer<State, Action> = (
     case "to":
       return to(state, action.page);
       break;
+    case "limitSwitch":
+      return { ...state, limitReached: action.direction };
+      break;
   }
 };
 
 export function usePaginate(startPage = 1, limit?: number) {
   const [page, dispatchPage] = useReducer(pageReducer, {
     page: startPage,
-    limitReached: false,
+    limitReached: startPage === 1 ? "bottom" : "none",
     pageLimit: limit,
   });
 
