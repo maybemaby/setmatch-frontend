@@ -7,6 +7,7 @@ import {
   PublicClientApplication,
 } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App";
 import { Home } from "./components/pages/Home/Home";
 import { Courts } from "./components/pages/Courts/Courts";
@@ -17,16 +18,18 @@ import "./index.css";
 import { IClaims } from "./types/IClaims";
 import { UserProvider } from "./components/UserProvider/UserProvider";
 
-export const msalInstance = new PublicClientApplication(msalConfig);
+const msalInstance = new PublicClientApplication(msalConfig);
+const queryClient = new QueryClient();
 
 msalInstance.addEventCallback(async (event) => {
   switch (event.eventType) {
-    case EventType.LOGIN_SUCCESS:
+    case EventType.LOGIN_SUCCESS: {
       const auth = event.payload as AuthenticationResult;
       if ((auth.idTokenClaims as IClaims).newUser) {
         await postUser(auth.accessToken);
       }
       break;
+    }
     default:
       console.log(event);
       break;
@@ -37,16 +40,18 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MsalProvider instance={msalInstance}>
       <UserProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<App />}>
-              <Route index={true} element={<Home />}></Route>
-              <Route element={<ProtectedRoutes />}>
-                <Route path="/courts" element={<Courts />}></Route>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<App />}>
+                <Route index={true} element={<Home />}></Route>
+                <Route element={<ProtectedRoutes />}>
+                  <Route path="/courts" element={<Courts />}></Route>
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
       </UserProvider>
     </MsalProvider>
   </React.StrictMode>
