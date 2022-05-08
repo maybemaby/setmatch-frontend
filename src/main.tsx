@@ -35,9 +35,9 @@ msalInstance.addEventCallback(async (event) => {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <MsalProvider instance={msalInstance}>
-        <UserProvider>
+    <MsalProvider instance={msalInstance}>
+      <UserProvider>
+        <BrowserRouter>
           <Routes>
             <Route element={<App />}>
               <Route index={true} element={<Home />}></Route>
@@ -46,8 +46,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               </Route>
             </Route>
           </Routes>
-        </UserProvider>
-      </MsalProvider>
-    </BrowserRouter>
+        </BrowserRouter>
+      </UserProvider>
+    </MsalProvider>
   </React.StrictMode>
 );

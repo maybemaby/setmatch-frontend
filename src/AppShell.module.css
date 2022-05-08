@@ -1,6 +1,5 @@
 .header {
   background-color: rgba(219, 230, 240, 0);
-  box-shadow: rgba(0, 0, 0, 0.637) 0px 10px 20px -20px;
   height: 60px;
   font-size: 1.5rem;
   font-weight: 600;
@@ -37,4 +36,5 @@
 
 .header.solid {
   background-color: rgba(219, 230, 240, 100);
+  box-shadow: rgba(0, 0, 0, 0.637) 0px 10px 20px -20px;
 }
