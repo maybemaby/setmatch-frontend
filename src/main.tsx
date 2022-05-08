@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
@@ -15,6 +15,7 @@ import { postUser } from "./handlers/users";
 import { msalConfig } from "./config";
 import "./index.css";
 import { IClaims } from "./types/IClaims";
+import { UserProvider } from "./components/UserProvider/UserProvider";
 
 export const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -36,14 +37,16 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <MsalProvider instance={msalInstance}>
-        <Routes>
-          <Route element={<App />}>
-            <Route index={true} element={<Home />}></Route>
-            <Route element={<ProtectedRoutes />}>
-              <Route path="/courts" element={<Courts />}></Route>
+        <UserProvider>
+          <Routes>
+            <Route element={<App />}>
+              <Route index={true} element={<Home />}></Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route path="/courts" element={<Courts />}></Route>
+              </Route>
             </Route>
-          </Route>
-        </Routes>
+          </Routes>
+        </UserProvider>
       </MsalProvider>
     </BrowserRouter>
   </React.StrictMode>
