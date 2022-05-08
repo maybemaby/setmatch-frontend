@@ -1,0 +1,10 @@
+* {
+  font-family: inherit;
+}
+
+.container {
+  position: static;
+  height: 80px;
+  background-color: var(--grey-300);
+  padding: 30px 20px;
+}

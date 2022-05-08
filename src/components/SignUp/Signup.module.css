@@ -1,0 +1,17 @@
+* {
+  font-family: inherit;
+}
+
+.container {
+  color: var(--green-300);
+  font-size: 1.3rem;
+  font-weight: inherit;
+  background: transparent;
+  border: none;
+  transition: color 200ms  ease-in-out;
+}
+
+.container:hover {
+  cursor: pointer;
+  color: var(--font-green)
+}

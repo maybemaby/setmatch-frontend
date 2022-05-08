@@ -17,6 +17,10 @@ export const b2cPolicies = {
       authority:
         "https://setmatchlogin.b2clogin.com/setmatchlogin.onmicrosoft.com/B2C_1_setmatch_auth_edit",
     },
+    signUp: {
+      authority:
+        "https://setmatchlogin.b2clogin.com/setmatchlogin.onmicrosoft.com/B2C_1_setmatch_auth_signup",
+    },
   },
   authorityDomain: "setmatchlogin.b2clogin.com",
 };
@@ -26,8 +30,8 @@ export const msalConfig: Configuration = {
     clientId: "0e2be501-1bee-4c1b-bced-bed16e0b2001",
     authority: b2cPolicies.authorities.signUpSignIn.authority,
     knownAuthorities: [b2cPolicies.authorityDomain],
-    redirectUri: "/",
     postLogoutRedirectUri: "/",
+    redirectUri: "/",
     navigateToLoginRequestUrl: true,
   },
   cache: {
