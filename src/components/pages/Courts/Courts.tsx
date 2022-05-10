@@ -62,7 +62,7 @@ export const Courts = () => {
         <div className={styles.alert}>Home Court: Not set</div>
       ) : (
         <div className={styles.alert}>
-          Home Court: {userContext?.user?.homeCourt?.address}
+          Current Home Court: {userContext?.user?.homeCourt?.address}
         </div>
       )}
       {isLoading && (
@@ -71,8 +71,8 @@ export const Courts = () => {
         </div>
       )}
       {isError && <div>Could not fetch results, try again later</div>}
-      <CourtList courts={data ?? []} />
-      {!isLoading && (
+      <CourtList courts={data ?? []} isLoading={isLoading} />
+      {!isLoading && !isError && (
         <PageNavigator>
           <PageNavigator.Previous />
           <PageNavigator.Display />

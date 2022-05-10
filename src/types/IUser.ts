@@ -11,3 +11,13 @@ export interface IUser {
   ratingEstimated?: boolean;
   signupDate: string;
 }
+
+export type PutUserDto = {
+  firstName: string;
+  lastName: string;
+  username: string;
+  about?: string;
+  ntrpRating?: number;
+  ratingEstimated?: boolean;
+  homeCourtId?: string;
+};

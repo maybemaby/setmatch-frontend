@@ -4,10 +4,11 @@ import styles from "./CourtList.module.css";
 
 interface CourtListProps {
   courts: ICourt[];
+  isLoading: boolean;
 }
 
-export const CourtList = ({ courts }: CourtListProps) => {
-  if (courts.length === 0) {
+export const CourtList = ({ courts, isLoading }: CourtListProps) => {
+  if (courts.length === 0 && !isLoading) {
     return (
       <div style={{ height: "50vh", marginTop: "50px", fontSize: "1.2rem" }}>
         No Results
