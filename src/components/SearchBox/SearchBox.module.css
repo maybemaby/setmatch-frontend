@@ -1,0 +1,18 @@
+.container {
+  padding: 10px;
+  width: 100%;
+  background-color: rgba(231, 231, 231, 0);
+  border: 2px solid var(--grey-300);
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-radius: 3px;
+  transition: all 200ms linear;
+}
+
+.container:hover {
+  background-color: rgba(141, 231, 138, 0.308);
+}
+
+.container:focus {
+  background-color: rgba(180, 219, 179, 0.308);
+}
