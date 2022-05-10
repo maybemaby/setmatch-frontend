@@ -10,7 +10,7 @@ export const ProtectedRoutes = () => {
 
   useEffect(() => {
     if (!authenticated && inProgress === InteractionStatus.None) {
-      instance.loginRedirect();
+      void instance.loginRedirect();
     }
   }, []);
 
@@ -19,6 +19,6 @@ export const ProtectedRoutes = () => {
   } else if (!authenticated && inProgress === InteractionStatus.None) {
     return <Unauthenticated />;
   } else {
-    return <div>Loading...</div>;
+    return <div style={{ minHeight: "100vh" }}>Loading...</div>;
   }
 };

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { useMsal } from "@azure/msal-react";
 import { getUser } from "../../handlers/users";
 import { IUser } from "../../types/IUser";
 import { loginRequest } from "../../config";
@@ -20,10 +20,10 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     instance.setActiveAccount(accounts[0]);
     const account = instance.getActiveAccount();
-    instance
-      .acquireTokenSilent(loginRequest)
-      .then((res) => {
-        if (account !== null && user === null) {
+    if (account !== null && user === null) {
+      instance
+        .acquireTokenSilent(loginRequest)
+        .then((res) => {
           getUser(account.localAccountId, res.accessToken)
             .then((user) => setUser({ ...user }))
             .catch((err) => {
@@ -31,13 +31,13 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
                 throw err;
               }
             });
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setUser(null);
-      });
-  }, []);
+        })
+        .catch((err) => {
+          console.error(err);
+          setUser(null);
+        });
+    }
+  }, [accounts]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
