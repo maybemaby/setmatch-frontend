@@ -7,6 +7,7 @@ import { useCourts } from "../../../hooks/useCourts";
 import { UserContext } from "../../UserProvider/UserProvider";
 import { loginRequest } from "../../../config";
 import styles from "./Courts.module.css";
+import { Loader } from "../../Loader/Loader";
 
 export const Courts = () => {
   const pageContext = usePageContext();
@@ -42,14 +43,20 @@ export const Courts = () => {
           Home Court: {userContext?.user?.homeCourt?.address}
         </div>
       )}
-      {isLoading && <div>Loading results...</div>}
+      {isLoading && (
+        <div className="centered">
+          <Loader message="Fetching results..." size="100px" />
+        </div>
+      )}
       {isError && <div>Could not fetch results, try again later</div>}
       <CourtList courts={data ?? []} />
-      <PageNavigator>
-        <PageNavigator.Previous />
-        <PageNavigator.Display />
-        <PageNavigator.Next />
-      </PageNavigator>
+      {!isLoading && (
+        <PageNavigator>
+          <PageNavigator.Previous />
+          <PageNavigator.Display />
+          <PageNavigator.Next />
+        </PageNavigator>
+      )}
     </main>
   );
 };
