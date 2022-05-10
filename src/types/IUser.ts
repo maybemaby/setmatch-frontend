@@ -9,4 +9,5 @@ export interface IUser {
   homeCourt?: ICourt;
   ntrpRating?: number;
   ratingEstimated?: boolean;
+  signupDate: string;
 }

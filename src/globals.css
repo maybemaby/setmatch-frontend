@@ -2,10 +2,12 @@
   --bg-primary: rgb(213, 218, 224);
   --font-purple: rgba(132, 20, 223, 0.801);
   --font-green: rgb(34, 146, 49);
+  --green-200: rgb(78, 223, 97);
   --green-300: rgb(49, 201, 69);
   --green-500: rgb(27, 117, 39);
   --white-500: whitesmoke;
   --grey-300: rgb(230, 230, 230);
+  --violet-400: rgb(120, 77, 221);
 }
 
 /* CSS Reset */
@@ -116,3 +118,10 @@ body {
   text-align: center;
 }
 
+.centered {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

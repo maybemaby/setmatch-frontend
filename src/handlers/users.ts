@@ -4,7 +4,7 @@ import { IUser } from "../types/IUser";
 const ENDPOINT = `${BASE_URL}/user`;
 
 export async function postUser(authToken?: string) {
-  let headers: Record<string, string> = {};
+  const headers: Record<string, string> = {};
   if (authToken) {
     headers.Authorization = `Bearer ${authToken}`;
   }
@@ -12,11 +12,12 @@ export async function postUser(authToken?: string) {
     method: "POST",
     headers: headers,
   });
+  return res;
 }
 
 // Retrieve User model from backend using id
 export async function getUser(id: string, authToken?: string) {
-  let headers: Record<string, string> = {};
+  const headers: Record<string, string> = {};
   if (authToken) {
     headers.Authorization = `Bearer ${authToken}`;
   }
@@ -25,7 +26,7 @@ export async function getUser(id: string, authToken?: string) {
     headers: headers,
   });
   if (!res.ok) {
-    throw new Error(await res.json());
+    throw new Error(((await res.json()) as { message: string; status: number }).message);
   }
   return (await res.json()) as IUser;
 }

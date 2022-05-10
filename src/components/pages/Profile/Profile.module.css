@@ -1,0 +1,171 @@
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: translate(0, -30);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0,0);
+  }
+}
+
+.container {
+  min-height: 100vh;
+  margin-top: 120px;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  margin-left: none;
+  animation: intro 500ms ease-in forwards normal;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #278049;
+  padding: 15px 20px;
+  border-radius: 20px;
+  color: rgb(230, 230, 230);
+  width: 300px;
+  transition: all 100ms linear;
+
+}
+
+.picture {
+  border-radius: 50%;
+  border: 2px solid #646464;
+  height: 100px;
+  width: 100px;
+  background-color: var(--grey-300);
+}
+
+.header {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 3px;
+}
+
+.name {
+  margin-top: 5px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.details {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  font-weight: 500;
+}
+
+.rating {
+  margin: 5px 0 10px 0;
+  width: 100px;
+  font-size: 1.1rem;
+}
+
+.topDetails {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.homeCourt {
+  display: flex;
+  flex-direction: column;
+  line-height: 20px;
+  min-width: 250px;
+  flex-grow: 2;
+  background-color: #278049;
+  color: rgb(230, 230, 230);
+  border: 4px solid var(--violet-400);
+  padding: 15px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.about {
+  resize: none;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #535353;
+  background-color: #b9b6b638;
+  padding: 10px;
+  width: 95%;
+  height: 100px;
+}
+
+.link {
+  margin-top: 25px;
+  text-decoration: none;
+  background-color: #6333e9;
+  padding: 5px;
+  border-radius: 5px;
+  color: inherit;
+  font-weight: 600;
+  transition: all 400ms cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.link:hover {
+  background-color: #5926e6;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin-left: 10%;
+    align-items: flex-start;
+  }
+
+  .info {
+    flex-direction: row;
+    gap: 40px;
+    width: 500px;
+  }
+  
+  .name {
+    margin-top: 20px;
+    text-align: start;
+  }
+
+  .topDetails {
+    flex-direction: row;
+    margin: 40px 0;
+    gap: 40px;
+  }
+
+  .about {
+    width: 700px;
+  }
+  
+  .homeCourt {
+    max-width: 550px;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about {
+    width: 900px;
+  }
+
+  .homeCourt {
+    max-width: 750px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about {
+    width: 1000px;
+  }
+  
+  .homeCourt {
+    max-width: 850px;
+  }
+}

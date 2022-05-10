@@ -19,10 +19,12 @@ import "./index.css";
 import { IClaims } from "./types/IClaims";
 import { UserProvider } from "./components/UserProvider/UserProvider";
 import { PageProvider } from "./components/PageNavigator/usePageProvider";
+import { Profile } from "./components/pages/Profile/Profile";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 const queryClient = new QueryClient();
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 msalInstance.addEventCallback(async (event) => {
   switch (event.eventType) {
     case EventType.LOGIN_SUCCESS: {
@@ -51,6 +53,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   <Route index={true} element={<Home />}></Route>
                   <Route element={<ProtectedRoutes />}>
                     <Route path="/courts" element={<Courts />}></Route>
+                    <Route path="/profile" element={<Profile />} />
                   </Route>
                 </Route>
               </Routes>
