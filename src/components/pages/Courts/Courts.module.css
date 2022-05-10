@@ -29,3 +29,9 @@
   border-width: 2px;
   border-radius: 10px;
 }
+
+.search {
+  width: 80%;
+  margin: 10px 0;
+  margin-bottom: 30px;
+}

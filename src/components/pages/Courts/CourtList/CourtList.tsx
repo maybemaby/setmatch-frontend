@@ -7,9 +7,18 @@ interface CourtListProps {
 }
 
 export const CourtList = ({ courts }: CourtListProps) => {
-  return <ul className={styles.container}>
-    {courts.map((court, index) => {
-      return <CourtItem court={court} key={index} />
-    })}
-  </ul>;
+  if (courts.length === 0) {
+    return (
+      <div style={{ height: "50vh", marginTop: "50px", fontSize: "1.2rem" }}>
+        No Results
+      </div>
+    );
+  }
+  return (
+    <ul className={styles.container}>
+      {courts.map((court, index) => {
+        return <CourtItem court={court} key={index} />;
+      })}
+    </ul>
+  );
 };

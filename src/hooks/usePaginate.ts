@@ -46,6 +46,9 @@ const to = (current: State, destination: number): State => {
     (current.pageLimit && destination > current.pageLimit)
   ) {
     return current;
+  } else if (destination === 1) {
+    current.limitReached = "bottom";
+    return { ...current, page: destination };
   } else {
     current.limitReached = "none";
     return { ...current, page: destination };

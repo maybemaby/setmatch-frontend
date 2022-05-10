@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useMsal } from "@azure/msal-react";
 import { CourtList } from "./CourtList/CourtList";
+import { SearchBox } from "../../SearchBox/SearchBox";
 import { usePageContext } from "../../PageNavigator/usePageProvider";
 import { PageNavigator } from "../../PageNavigator/PageNavigator";
 import { useCourts } from "../../../hooks/useCourts";
@@ -11,10 +12,16 @@ import { Loader } from "../../Loader/Loader";
 
 export const Courts = () => {
   const pageContext = usePageContext();
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
   const { instance, accounts } = useMsal();
   const [token, setToken] = useState<string | null>(null);
   const userContext = useContext(UserContext);
-  const { data, isLoading, isError } = useCourts(token, pageContext?.page.page);
+  const { data, isLoading, isError } = useCourts(
+    token,
+    pageContext?.page.page,
+    search
+  );
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -33,9 +40,24 @@ export const Courts = () => {
     }
   }, [data]);
 
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key.toLowerCase() === "enter") {
+      pageContext?.dispatchPage({ type: "to", page: 1 });
+      setSearch(e.currentTarget.value);
+    }
+  };
+
   return (
     <main className={styles.container}>
-      <h1 className={styles.header}>Courts</h1>
+      <h1 className={styles.header}>Find a court</h1>
+      <div className={styles.search}>
+        <SearchBox
+          value={query}
+          onChange={(e) => setQuery(e.currentTarget.value)}
+          onKeyDown={handleSearch}
+          placeholder={"Search courts"}
+        />
+      </div>
       {userContext?.user && userContext.user.homeCourt === null ? (
         <div className={styles.alert}>Home Court: Not set</div>
       ) : (
