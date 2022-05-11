@@ -32,6 +32,7 @@ export const Courts = () => {
     };
 
     fetchToken().catch((err) => console.error(err));
+    pageContext?.dispatchPage({ type: "to", page: 1 });
   }, []);
 
   useEffect(() => {
