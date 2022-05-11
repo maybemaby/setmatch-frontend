@@ -12,6 +12,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App";
 import { Home } from "./components/pages/Home/Home";
 import { Courts } from "./components/pages/Courts/Courts";
+import { SearchPage } from "./components/pages/Search/SearchPage";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { postUser } from "./handlers/users";
 import { msalConfig } from "./config";
@@ -54,6 +55,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   <Route element={<ProtectedRoutes />}>
                     <Route path="/courts" element={<Courts />}></Route>
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/search" element={<SearchPage />} />
                   </Route>
                 </Route>
               </Routes>

@@ -4,22 +4,17 @@ import { Link } from "react-router-dom";
 import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
-  useMsal,
 } from "@azure/msal-react";
 import { SignOutButton } from "./components/SignOut/SignOutButton";
 import { SignInButton } from "./components/SignIn/SignInButton";
 import { SignUpButton } from "./components/SignUp/SignupButton";
 import { ProfileButton } from "./components/Profile/ProfileButton";
 import { Footer } from "./components/Footer/Footer";
-import { UserContext } from "./components/UserProvider/UserProvider";
 import "./globals.css";
 import styles from "./AppShell.module.css";
 
 function App() {
   const [atTop, setAtTop] = useState(true);
-  const userContext = useContext(UserContext);
-
-  const { instance } = useMsal();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
