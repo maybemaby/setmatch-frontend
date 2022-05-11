@@ -43,8 +43,8 @@ msalInstance.addEventCallback(async (event) => {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MsalProvider instance={msalInstance}>
-      <UserProvider>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <UserProvider>
           {/* <ReactQueryDevtools initialIsOpen={false} /> */}
           <PageProvider>
             <BrowserRouter>
@@ -59,8 +59,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               </Routes>
             </BrowserRouter>
           </PageProvider>
-        </QueryClientProvider>
-      </UserProvider>
+        </UserProvider>
+      </QueryClientProvider>
     </MsalProvider>
   </React.StrictMode>
 );
