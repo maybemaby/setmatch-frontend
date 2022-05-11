@@ -15,7 +15,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUser | null>(null);
   const { accounts } = useMsal();
   const authToken = useAccessToken();
-  const { data } = useUser(authToken, accounts[0].localAccountId);
+  const { data } = useUser(authToken, accounts[0]?.localAccountId);
 
   // When mounting and user is authenticated, sometimes UserProvider is not yet set.
   // i.e when url is manually changed.
