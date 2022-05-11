@@ -48,3 +48,38 @@ export async function putUser(id: string, dto: PutUserDto, authToken?: string) {
   }
   return true;
 }
+
+export type SearchUserParams = {
+  minNtrp?: number;
+  maxNtrp?: number;
+  page?: number;
+  size?: number;
+  homeCourtId?: string;
+};
+
+export async function searchUsers(
+  { minNtrp, maxNtrp, page, size, homeCourtId }: SearchUserParams,
+  authToken?: string
+): Promise<IUser[]> {
+  const uri = new URL(`${ENDPOINT}/search`);
+  uri.searchParams.append("minNtrp", (minNtrp ?? 1.5).toString());
+  uri.searchParams.append("maxNtrp", (maxNtrp ?? 7).toString());
+  uri.searchParams.append("p", (page ?? 1).toString());
+  uri.searchParams.append("size", (size ?? 10).toString());
+  if (homeCourtId) {
+    uri.searchParams.append("homeCourt", homeCourtId);
+  }
+
+  const headers: Record<string, string> = {};
+  if (authToken) {
+    headers.Authorization = `Bearer ${authToken}`;
+  }
+  const res = await fetch(uri.toString(), {
+    headers: headers,
+    method: "GET",
+  });
+  if (!res.ok) {
+    throw new Error("Couldn't fetch users");
+  }
+  return (await res.json()) as IUser[];
+}
