@@ -14,6 +14,7 @@ export const useSearchUsers = (
     {
       enabled: !!authToken,
       keepPreviousData: true,
+      refetchOnWindowFocus: false,
     }
   );
 };

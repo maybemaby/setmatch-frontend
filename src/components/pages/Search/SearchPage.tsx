@@ -1,6 +1,7 @@
 import { useSearchUsers } from "../../../hooks/useSearchUsers";
 import { useAccessToken } from "../../../hooks/useAccessToken";
 import { usePageContext } from "../../PageNavigator/usePageProvider";
+import { UserList } from "./UserList/UserList";
 import { PageNavigator } from "../../PageNavigator/PageNavigator";
 import { Loader } from "../../Loader/Loader";
 import styles from "./Search.module.css";
@@ -18,6 +19,12 @@ export const SearchPage = () => {
     pageContext?.dispatchPage({ type: "to", page: 1 });
   }, []);
 
+  useEffect(() => {
+    if (typeof data?.length !== "undefined" && data.length < 10) {
+      pageContext?.dispatchPage({ type: "limitSwitch", direction: "top" });
+    }
+  }, [data]);
+
   return (
     <main className={styles.container}>
       {isLoading && (
@@ -26,9 +33,7 @@ export const SearchPage = () => {
         </div>
       )}
       {isError && <div>Failed to fetch users, try again later</div>}
-      {data?.map((user, index) => {
-        return <div key={index}>{user.firstName}</div>;
-      })}
+      <UserList users={data ?? []} />
 
       {!isLoading && !isError && (
         <PageNavigator>
