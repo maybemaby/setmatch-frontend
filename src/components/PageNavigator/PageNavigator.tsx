@@ -7,7 +7,19 @@ interface PageNavigatorProps {
 }
 
 export const PageNavigator = ({ children }: PageNavigatorProps) => {
-  return <div style={{ padding: "10px", display: "flex" }}>{children}</div>;
+  return (
+    <div
+      style={{
+        padding: "10px",
+        display: "flex",
+        alignItems: "center",
+        position: "sticky",
+        bottom: 0,
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 
 PageNavigator.Display = PageDisplay;

@@ -1,4 +1,5 @@
 import { usePageContext } from "./usePageProvider";
+import styles from "./PageNavigator.module.css";
 
 export const PagePrev = () => {
   const pageContext = usePageContext();
@@ -8,7 +9,10 @@ export const PagePrev = () => {
     pageContext?.page.page !== 1
   ) {
     return (
-      <button onClick={() => pageContext?.dispatchPage({ type: "prev" })}>
+      <button
+        className={styles.button}
+        onClick={() => pageContext?.dispatchPage({ type: "prev" })}
+      >
         Prev
       </button>
     );
