@@ -3,16 +3,19 @@ import { SearchUserParams, searchUsers } from "../handlers/users";
 import { IUser } from "../types/IUser";
 
 export const useSearchUsers = (
-  { homeCourtId, maxNtrp, minNtrp, page }: SearchUserParams,
+  { homeCourtId, maxNtrp, minNtrp, page, exclude }: SearchUserParams,
   authToken?: string
 ) => {
   return useQuery<IUser[], Error>(
     ["search", page, homeCourtId, maxNtrp, minNtrp],
     () => {
-      return searchUsers({ minNtrp, maxNtrp, page, homeCourtId }, authToken);
+      return searchUsers(
+        { minNtrp, maxNtrp, page, homeCourtId, exclude },
+        authToken
+      );
     },
     {
-      enabled: !!authToken,
+      enabled: !!authToken && !!exclude,
       keepPreviousData: true,
       refetchOnWindowFocus: false,
     }

@@ -54,16 +54,22 @@ export type SearchUserParams = {
   maxNtrp?: number;
   page?: number;
   size?: number;
+  exclude?: string;
   homeCourtId?: string;
 };
 
 export async function searchUsers(
-  { minNtrp, maxNtrp, page, size, homeCourtId }: SearchUserParams,
+  { minNtrp, maxNtrp, page, size, exclude, homeCourtId }: SearchUserParams,
   authToken?: string
 ): Promise<IUser[]> {
   const uri = new URL(`${ENDPOINT}/search`);
-  uri.searchParams.append("minNtrp", (minNtrp ?? 1.5).toString());
-  uri.searchParams.append("maxNtrp", (maxNtrp ?? 7).toString());
+  if (minNtrp) {
+    uri.searchParams.append("minNtrp", minNtrp.toString());
+  }
+  if (maxNtrp) {
+    uri.searchParams.append("maxNtrp", maxNtrp.toString());
+  }
+  uri.searchParams.append("exclude", exclude ?? "");
   uri.searchParams.append("p", (page ?? 1).toString());
   uri.searchParams.append("size", (size ?? 10).toString());
   if (homeCourtId) {
