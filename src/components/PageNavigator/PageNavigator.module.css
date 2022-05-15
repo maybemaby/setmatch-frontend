@@ -16,3 +16,11 @@
   background-color: var(--violet-400);
   color: var(--white-500);
 }
+
+.display {
+  padding: 5px 8px;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid black;
+  font-size: 1.0rem;
+}

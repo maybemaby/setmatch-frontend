@@ -1,6 +1,7 @@
 import { usePageContext } from "./usePageProvider";
+import styles from "./PageNavigator.module.css";
 
 export const PageDisplay = () => {
   const pageContext = usePageContext();
-  return <div>{pageContext?.page.page}</div>;
+  return <div className={styles.display}>{pageContext?.page.page}</div>;
 };
