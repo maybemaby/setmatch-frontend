@@ -23,6 +23,23 @@
   font-weight: 500;
   margin-bottom: 20px;
   margin-left: 100px;
+  transition: color 200ms linear;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.userLink:link {
+  color: unset;
+  text-decoration: none;
+}
+
+.userLink:visited {
+  color: unset;
+}
+
+.userDetails:hover {
+  color: var(--violet-400);
+  cursor: pointer;
 }
 
 .userExtra {

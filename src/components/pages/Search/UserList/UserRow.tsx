@@ -1,4 +1,5 @@
 import { IUser } from "../../../../types/IUser";
+import { Link } from "react-router-dom";
 import styles from "./UserList.module.css";
 
 interface UserRowProps {
@@ -8,15 +9,17 @@ interface UserRowProps {
 export const UserRow = ({ user }: UserRowProps) => {
   return (
     <li className={styles.row}>
-      <div className={styles.profilePic}></div>
+      <Link to={`/profiles/${user.id}`}>
+        <div className={styles.profilePic}></div>
+      </Link>
       <div className={styles.userDetails}>
-        {user.firstName} {user.lastName}
+        <Link to={`/profiles/${user.id}`} className={styles.userLink}>
+          {user.firstName} {user.lastName}
+        </Link>
       </div>
       <div className={styles.userExtra}>
-        <div>NTRP Rating: {user.ntrpRating ?? "No rating"}</div>
-        <div className={styles.homeCourt}>
-          Home Court: {user.homeCourt?.name ?? "None"}
-        </div>
+        <div>{user.ntrpRating?.toPrecision(2) ?? "No"} Rating</div>
+        <div className={styles.homeCourt}>{user.homeCourt?.name ?? "None"}</div>
       </div>
     </li>
   );

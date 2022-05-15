@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
@@ -21,6 +21,7 @@ import { IClaims } from "./types/IClaims";
 import { UserProvider } from "./components/UserProvider/UserProvider";
 import { PageProvider } from "./components/PageNavigator/usePageProvider";
 import { Profile } from "./components/pages/Profile/Profile";
+import { OtherProfile } from "./components/pages/Profile/OtherProfile";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   <Route element={<ProtectedRoutes />}>
                     <Route path="/courts" element={<Courts />}></Route>
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/profiles/:userId" element={<OtherProfile />} />
                     <Route path="/search" element={<SearchPage />} />
                   </Route>
                 </Route>

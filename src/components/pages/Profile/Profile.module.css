@@ -11,7 +11,7 @@
 
 .container {
   min-height: 100vh;
-  margin-top: 120px;
+  margin-top: 100px;
   text-align: start;
   display: flex;
   flex-direction: column;
@@ -20,23 +20,28 @@
   align-items: center;
 }
 
+.profile {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  background: linear-gradient(180deg, #4b8a5d 0%, rgba(85, 165, 106, 0.8) 100%);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  padding: 15px 15px;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+}
+
 .info {
   display: flex;
-  gap: 10px;
-  flex-direction: column;
-  align-items: center;
-  background-color: #278049;
-  padding: 15px 20px;
-  border-radius: 20px;
-  color: rgb(230, 230, 230);
-  width: 300px;
+  gap: 20px;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
   transition: all 100ms linear;
-
 }
 
 .picture {
   border-radius: 50%;
-  border: 2px solid #646464;
   height: 100px;
   width: 100px;
   background-color: var(--grey-300);
@@ -50,9 +55,36 @@
 
 .name {
   margin-top: 5px;
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-align: center;
+}
+
+.rightProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rating {
+  color: #c7e9d4;
+  margin: 0px 0px;
+  font-size: 1.0rem;
+  font-weight: unset;
+}
+
+.matchRequest {
+  padding: 5px;
+  background-color: var(--violet-300);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  transition: background-color 200ms linear;
+}
+
+.matchRequest:hover {
+  cursor: pointer;
+  background-color: var(--violet-500);
 }
 
 .details {
@@ -93,13 +125,13 @@
 
 .about {
   resize: none;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: #535353;
-  background-color: #b9b6b638;
-  padding: 10px;
-  width: 95%;
-  height: 100px;
+  width: 100%;
+  height: fit-content;
+  margin: 20px 10px;
+}
+
+.aboutBody {
+  margin-top: 10px;
 }
 
 .link {
@@ -127,11 +159,6 @@
     flex-direction: row;
     gap: 40px;
     width: 500px;
-  }
-  
-  .name {
-    margin-top: 20px;
-    text-align: start;
   }
 
   .topDetails {

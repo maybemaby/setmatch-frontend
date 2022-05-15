@@ -4,7 +4,7 @@ import { IUser } from "../types/IUser";
 
 export const useUser = (authToken: string | null, id: string) => {
   return useQuery<IUser, Error>(
-    ["user"],
+    ["user", id],
     () => getUser(id, authToken ?? undefined),
     {
       enabled: !!authToken,
