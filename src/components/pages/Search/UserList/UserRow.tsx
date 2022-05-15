@@ -13,7 +13,7 @@ export const UserRow = ({ user }: UserRowProps) => {
         {user.firstName} {user.lastName}
       </div>
       <div className={styles.userExtra}>
-        <div>NTRP Rating: {user.ntrpRating}</div>
+        <div>NTRP Rating: {user.ntrpRating ?? "No rating"}</div>
         <div className={styles.homeCourt}>
           Home Court: {user.homeCourt?.name ?? "None"}
         </div>

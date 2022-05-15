@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  align-self: center;
+  width: 95%;
+  padding: 10px;
+  background-color: rgba(230, 233, 235, 0.212);
+  border: 1px solid rgb(143, 143, 143);
+}
+
+.submit {
+  align-self: flex-end;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #3c76ff;
+  color: var(--white-500);
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: #1c5ffa;
+}
+
+.rangeInputContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ranges {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.rangeField {
+  width: 50px;
+  padding: 5px;
+  margin-left: 8px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.checkbox {
+  width: 15px;
+  aspect-ratio: 1/1;
+  margin-left: 20px;
+  margin-right: 5px;
+  accent-color: var(--violet-400);
+}
+
+.match {
+  width: fit-content;
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.errors {
+  color: rgb(241, 86, 58);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    align-self: center;
+    width: 80%;
+  }
+
+  .checkboxmatch {
+    margin-left: 0px;
+  }
+}

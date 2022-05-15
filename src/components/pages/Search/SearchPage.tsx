@@ -1,17 +1,44 @@
+import { useCallback, useContext, useMemo } from "react";
 import { useSearchUsers } from "../../../hooks/useSearchUsers";
 import { useAccessToken } from "../../../hooks/useAccessToken";
 import { usePageContext } from "../../PageNavigator/usePageProvider";
+import { useEffect } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { UserContext } from "../../UserProvider/UserProvider";
 import { UserList } from "./UserList/UserList";
 import { PageNavigator } from "../../PageNavigator/PageNavigator";
 import { Loader } from "../../Loader/Loader";
+import { SearchSettings } from "./SearchSettings/SearchSettings";
+import { UserSearchFilter } from "../../../types/UserSearchFilter";
 import styles from "./Search.module.css";
-import { useEffect } from "react";
 
 export const SearchPage = () => {
+  const userContext = useContext(UserContext);
   const pageContext = usePageContext();
   const authToken = useAccessToken();
+  const methods = useForm<UserSearchFilter>({ mode: "onChange" });
+  const courtId = useCallback(() => {
+    return methods.getValues().matchingHomeCourt
+      ? userContext?.user?.homeCourt?.id
+      : undefined;
+  }, [methods.formState.isSubmitSuccessful]);
+
+  const minNtrp = useCallback(() => {
+    return methods.getValues().minNtrp ?? undefined;
+  }, [methods.formState.isSubmitSuccessful]);
+
+  const maxNtrp = useCallback(() => {
+    return methods.getValues().maxNtrp ?? undefined;
+  }, [methods.formState.isSubmitSuccessful]);
+
   const { data, isError, isLoading } = useSearchUsers(
-    { page: pageContext?.page.page },
+    {
+      page: pageContext?.page.page,
+      exclude: userContext?.user?.id,
+      minNtrp: minNtrp(),
+      maxNtrp: maxNtrp(),
+      homeCourtId: courtId(),
+    },
     authToken ?? undefined
   );
 
@@ -27,6 +54,9 @@ export const SearchPage = () => {
 
   return (
     <main className={styles.container}>
+      <FormProvider {...methods}>
+        <SearchSettings />
+      </FormProvider>
       {isLoading && (
         <div className="centered">
           <Loader size="100px" message="Fetching matching users..." />
