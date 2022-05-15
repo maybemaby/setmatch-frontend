@@ -36,6 +36,8 @@
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .stats {
@@ -46,7 +48,6 @@
   border-radius: 5px;
   border: 2px solid rgba(0, 0, 0, 0.418);
   background-color: rgba(177, 103, 238, 0.562);
-  font-size: 1.05rem;
   display: flex;
   align-items: center;
   gap: 5px;

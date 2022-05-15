@@ -20,6 +20,7 @@ export const SearchSettings = () => {
   return (
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form className={styles.container} onSubmit={handleSubmit(submitForm)}>
+      <strong className={styles.heading}>Filters</strong>
       <RangeInput />
       <div className={styles.match}>
         <input

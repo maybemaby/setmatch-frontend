@@ -9,6 +9,7 @@ export const SignOutButton = () => {
   };
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <button className={styles.container} onClick={handleSignOut}>
       Logout
     </button>

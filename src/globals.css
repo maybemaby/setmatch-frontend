@@ -8,7 +8,9 @@
   --white-500: whitesmoke;
   --grey-200: rgb(240, 240, 240);
   --grey-300: rgb(230, 230, 230);
+  --violet-300: #9c74f3;
   --violet-400: rgb(120, 77, 221);
+  --violet-500: rgb(106, 57, 221);
 }
 
 /* CSS Reset */
@@ -107,11 +109,41 @@ video {
   vertical-align: baseline;
 }
 
+@font-face {
+  font-family: "Inter";
+  src: url("./static/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./static/Inter-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./static/Inter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./static/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: "Inter";
+  src: url("./static/Inter-Light.ttf") format("truetype");
+  font-weight: 300;
+}
 
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
   font-size: 16px;
 }
 

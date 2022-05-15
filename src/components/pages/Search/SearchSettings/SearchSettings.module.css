@@ -5,17 +5,26 @@
   align-self: center;
   width: 95%;
   padding: 10px;
-  background-color: rgba(230, 233, 235, 0.212);
-  border: 1px solid rgb(143, 143, 143);
+  border-bottom: 2px solid var(--grey-300);
+  /* background-color: rgba(230, 233, 235, 0.212); */
+  /* border: 1px solid rgb(143, 143, 143); */
+}
+
+.heading {
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
 }
 
 .submit {
-  align-self: flex-end;
+  align-self: flex-start;
+  margin-top: 20px;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   background-color: #3c76ff;
-  color: var(--white-500);
+  color: hsl(150, 55%, 100%);
 }
 
 .submit:hover {
