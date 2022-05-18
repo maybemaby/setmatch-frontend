@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { BsChevronLeft } from "react-icons/bs";
 import { useAccessToken } from "../../../hooks/useAccessToken";
 import { useUser } from "../../../hooks/useUser";
 import { Loader } from "../../Loader/Loader";
@@ -18,11 +19,14 @@ export const OtherProfile = () => {
       )}
 
       {isError && <div className="centered">Error retrieving profile</div>}
-
+      <Link to="/search" className={styles.backButton}>
+        <BsChevronLeft size={15} />
+        Back to list
+      </Link>
       <div className={styles.profile}>
         <div className={styles.info}>
           <div className={styles.picture}></div>
-          <div className={styles.profileRight}>
+          <div className={styles.rightProfile}>
             <h2 className={styles.name}>
               {data?.firstName} {data?.lastName}
             </h2>

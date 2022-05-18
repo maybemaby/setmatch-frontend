@@ -20,6 +20,20 @@
   align-items: center;
 }
 
+.backButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  font-size: 1.05rem;
+  border: none;
+  align-self: flex-start;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: unset;
+}
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -48,16 +62,22 @@
 }
 
 .header {
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
   margin: 3px;
+}
+
+.subheader {
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 1.0rem;
+  color: #c7e9d4;
 }
 
 .name {
   margin-top: 5px;
   font-size: 1.2rem;
   font-weight: 600;
-  text-align: center;
 }
 
 .rightProfile {
@@ -67,11 +87,14 @@
 }
 
 .rating {
+  text-align: left;
   color: #c7e9d4;
-  margin: 0px 0px;
+  margin: 0;
   font-size: 1.0rem;
   font-weight: unset;
+  width: fit-content;
 }
+
 
 .matchRequest {
   padding: 5px;
@@ -79,6 +102,7 @@
   border: none;
   border-radius: 3px;
   color: white;
+  width: 130px;
   transition: background-color 200ms linear;
 }
 
@@ -93,12 +117,6 @@
   flex-direction: column;
   width: 90%;
   font-weight: 500;
-}
-
-.rating {
-  margin: 5px 0 10px 0;
-  width: 100px;
-  font-size: 1.1rem;
 }
 
 .topDetails {
@@ -137,8 +155,9 @@
 .link {
   margin-top: 25px;
   text-decoration: none;
-  background-color: #6333e9;
-  padding: 5px;
+  background-color: var(--violet-400);
+  padding: 8px;
+  width: fit-content;
   border-radius: 5px;
   color: inherit;
   font-weight: 600;
@@ -146,7 +165,7 @@
 }
 
 .link:hover {
-  background-color: #5926e6;
+  background-color: var(--violet-500);
 }
 
 @media screen and (min-width: 768px) {
@@ -158,7 +177,7 @@
   .info {
     flex-direction: row;
     gap: 40px;
-    width: 500px;
+    width: auto;
   }
 
   .topDetails {
