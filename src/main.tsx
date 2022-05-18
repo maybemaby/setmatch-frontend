@@ -22,6 +22,7 @@ import { UserProvider } from "./components/UserProvider/UserProvider";
 import { PageProvider } from "./components/PageNavigator/usePageProvider";
 import { Profile } from "./components/pages/Profile/Profile";
 import { OtherProfile } from "./components/pages/Profile/OtherProfile";
+import { Edit } from "./components/pages/Profile/Edit/Edit";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 const queryClient = new QueryClient();
@@ -56,7 +57,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   <Route element={<ProtectedRoutes />}>
                     <Route path="/courts" element={<Courts />}></Route>
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/profiles/:userId" element={<OtherProfile />} />
+                    <Route path="/profile/edit" element={<Edit />} />
+                    <Route
+                      path="/profiles/:userId"
+                      element={<OtherProfile />}
+                    />
                     <Route path="/search" element={<SearchPage />} />
                   </Route>
                 </Route>

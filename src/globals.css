@@ -4,6 +4,7 @@
   --font-green: rgb(34, 146, 49);
   --green-200: rgb(78, 223, 97);
   --green-300: rgb(49, 201, 69);
+  --green-400: rgb(40, 167, 57);
   --green-500: rgb(27, 117, 39);
   --white-500: whitesmoke;
   --grey-200: rgb(240, 240, 240);
@@ -11,6 +12,7 @@
   --violet-300: #9c74f3;
   --violet-400: rgb(120, 77, 221);
   --violet-500: rgb(106, 57, 221);
+  --alert-red: hsla(354, 69%, 70%, 1);
 }
 
 /* CSS Reset */

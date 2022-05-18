@@ -43,6 +43,7 @@
   padding: 15px 15px;
   border-radius: 10px;
   color: rgb(255, 255, 255);
+  position: relative;
 }
 
 .info {
@@ -119,14 +120,6 @@
   font-weight: 500;
 }
 
-.topDetails {
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 20px;
-}
-
 .homeCourt {
   display: flex;
   flex-direction: column;
@@ -144,12 +137,15 @@
 .about {
   resize: none;
   width: 100%;
+  max-width: 300px;
   height: fit-content;
   margin: 20px 10px;
 }
 
 .aboutBody {
   margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
 }
 
 .link {
@@ -160,12 +156,25 @@
   width: fit-content;
   border-radius: 5px;
   color: inherit;
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 0.9rem;
   transition: all 400ms cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
 .link:hover {
   background-color: var(--violet-500);
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 
 @media screen and (min-width: 768px) {
@@ -187,7 +196,7 @@
   }
 
   .about {
-    width: 700px;
+    max-width: 500px;
   }
   
   .homeCourt {
@@ -198,7 +207,7 @@
 
 @media screen and (min-width: 1024px) {
   .about {
-    width: 900px;
+    max-width: 900px;
   }
 
   .homeCourt {
@@ -208,7 +217,7 @@
 
 @media screen and (min-width: 1280px) {
   .about {
-    width: 1000px;
+    max-width: 1000px;
   }
   
   .homeCourt {

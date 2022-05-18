@@ -24,7 +24,7 @@ export const SearchSettings = () => {
       <RangeInput />
       <div className={styles.match}>
         <input
-          className={`${styles.checkbox} ${styles.checkboxmatch}`}
+          className={`${styles.checkbox}`}
           type="checkbox"
           {...register("matchingHomeCourt")}
         />

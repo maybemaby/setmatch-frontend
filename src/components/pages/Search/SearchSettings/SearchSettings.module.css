@@ -70,6 +70,10 @@
   margin-top: 10px;
 }
 
+.match .checkbox {
+  margin-left: 0;
+}
+
 .errors {
   color: rgb(241, 86, 58);
 }

@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineEdit } from "react-icons/ai";
 import { UserContext } from "../../UserProvider/UserProvider";
 import { Loader } from "../../Loader/Loader";
 import styles from "./Profile.module.css";
@@ -21,7 +22,7 @@ export const Profile = () => {
           alignItems: "center",
         }}
       >
-        <Loader message="Loading..." size="100px"></Loader>;
+        <Loader message="Loading..." size="100px" horizontal={false}></Loader>;
       </div>
     );
   }
@@ -46,6 +47,13 @@ export const Profile = () => {
               {"Member since: " +
                 new Date(userContext.user.signupDate).toLocaleDateString()}
             </h4>
+            <Link
+              to="/profile/edit"
+              className={`${styles.link} ${styles.edit}`}
+            >
+              <AiOutlineEdit size={18} />
+              Edit Profile
+            </Link>
           </div>
         </div>
         <div className={styles.about}>
