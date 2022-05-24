@@ -13,6 +13,7 @@
   --violet-400: rgb(120, 77, 221);
   --violet-500: rgb(106, 57, 221);
   --alert-red: hsla(354, 69%, 70%, 1);
+  --inset-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
 }
 
 /* CSS Reset */

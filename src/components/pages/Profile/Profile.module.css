@@ -179,8 +179,8 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    margin-left: 10%;
-    align-items: flex-start;
+    align-items: center;
+    margin: 100px 50px 0 50px;
   }
 
   .info {
@@ -197,6 +197,10 @@
 
   .about {
     max-width: 500px;
+  }
+
+  .aboutBody {
+    font-size: 1.0rem;
   }
   
   .homeCourt {
@@ -218,6 +222,10 @@
 @media screen and (min-width: 1280px) {
   .about {
     max-width: 1000px;
+  }
+
+  .aboutBody {
+    font-size: 1.1rem;
   }
   
   .homeCourt {
