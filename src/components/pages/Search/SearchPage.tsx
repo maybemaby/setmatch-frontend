@@ -59,7 +59,11 @@ export const SearchPage = () => {
       </FormProvider>
       {isLoading && (
         <div className="centered">
-          <Loader size="100px" message="Fetching matching users..." />
+          <Loader
+            size="100px"
+            message="Fetching matching users..."
+            horizontal={false}
+          />
         </div>
       )}
       {isError && <div>Failed to fetch users, try again later</div>}

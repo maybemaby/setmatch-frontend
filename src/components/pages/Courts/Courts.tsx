@@ -68,7 +68,11 @@ export const Courts = () => {
       )}
       {isLoading && (
         <div className="centered">
-          <Loader message="Fetching results..." size="100px" />
+          <Loader
+            message="Fetching results..."
+            size="100px"
+            horizontal={false}
+          />
         </div>
       )}
       {isError && <div>Could not fetch results, try again later</div>}
