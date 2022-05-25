@@ -32,11 +32,9 @@ export const Modal = ({ isOpen, changeState, children }: ModalProps) => {
     <>
       {isOpen && (
         <div className={styles.innerContainer} ref={ref}>
-          <AiOutlineClose
-            size={25}
-            onClick={changeState}
-            className={styles.exit}
-          />
+          <button onClick={changeState} className={styles.exit}>
+            <AiOutlineClose size={25} />
+          </button>
           {children}
         </div>
       )}

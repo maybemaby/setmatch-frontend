@@ -39,6 +39,8 @@
   position: absolute;
   top: 15px;
   right: 10px;
+  border: none;
+  background-color: transparent;
 }
 
 .exit:hover {
