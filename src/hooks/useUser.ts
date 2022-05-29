@@ -8,6 +8,7 @@ export const useUser = (authToken: string | null, id: string) => {
     () => getUser(id, authToken ?? undefined),
     {
       enabled: !!authToken,
+      refetchOnWindowFocus: false,
     }
   );
 };

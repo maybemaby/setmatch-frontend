@@ -4,17 +4,31 @@ import { useAccessToken } from "../../../hooks/useAccessToken";
 import { useUser } from "../../../hooks/useUser";
 import { Loader } from "../../Loader/Loader";
 import styles from "./Profile.module.css";
+import { useCallback, useState } from "react";
+import { Modal } from "../../Modal/Modal";
+import { RequestMatchForm } from "../../RequestMatchForm";
 
 export const OtherProfile = () => {
   const { userId } = useParams();
   const authToken = useAccessToken();
   const { data, isLoading, isError } = useUser(authToken, userId ?? "");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleModalToggle = useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
 
   return (
     <main className={styles.container}>
+      <Modal isOpen={isOpen} changeState={handleModalToggle}>
+        <div style={{ fontSize: "1.1rem" }}>
+          Match Details
+          <RequestMatchForm afterSuccess={() => setIsOpen(false)} />
+        </div>
+      </Modal>
       {isLoading && (
         <div className="centered">
-          <Loader size="100px" message="Loading..." />
+          <Loader size="100px" message="Loading..." horizontal={false} />
         </div>
       )}
 
@@ -37,7 +51,9 @@ export const OtherProfile = () => {
                 <div>Unrated</div>
               )}
             </h3>
-            <button className={styles.matchRequest}>Request Match</button>
+            <button onClick={handleModalToggle} className={styles.matchRequest}>
+              Request Match
+            </button>
           </div>
         </div>
         <div className={styles.about}>
