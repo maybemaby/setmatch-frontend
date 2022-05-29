@@ -1,11 +1,11 @@
 .container {
   overflow: visible;
-  min-width: 120px;
 }
 
 .horizontal {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
 .horizontal.loader {
